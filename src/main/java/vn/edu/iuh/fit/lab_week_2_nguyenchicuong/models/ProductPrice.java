@@ -9,9 +9,13 @@ import java.time.LocalDateTime;
 @Table(name = "product_price")
 public class ProductPrice implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_price_id", unique = true, nullable = false)
+    @Column(name = "price_date_time", unique = true, nullable = false)
     private LocalDateTime price_date_time;
+    @Column(name = "note",columnDefinition = "varchar(255)")
     private String note;
+    @Column(name = "price",columnDefinition = "double")
     private double price;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
 }

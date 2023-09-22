@@ -2,23 +2,92 @@ package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models;
 
 
 import jakarta.persistence.*;
-public class Customer {
+
+import java.io.Serializable;
+import java.util.List;
+
+@Entity
+@Table(name="customer")
+public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cust_id", unique = true, nullable = false)
-    private Long custId;
+    @Column(name = "cust_id", unique = true, nullable = false,columnDefinition = "BIGINT(20)")
+    private Long id;
 
-    @Column(name = "cust_name", columnDefinition = "varchar(255)")
+    @Column(name = "cust_name", columnDefinition = "varchar(150)",nullable = false)
     private String custName;
 
-    @Column(name = "email", columnDefinition = "varchar(255)")
+    @Column(name = "email", columnDefinition = "varchar(150)",nullable = true)
     private String email;
 
-    @Column(name = "phone", columnDefinition = "varchar(20)")
+    @Column(name = "phone", columnDefinition = "varchar(15)",nullable = false)
     private String phone;
 
-    @Column(name = "address", columnDefinition = "text")
+    @Column(name = "address", columnDefinition = "text",nullable = false)
     private String address;
+    @OneToMany(mappedBy = "order_id")
+    private List<Order> orderList;
+    public Customer() {
+    }
 
-    // Getters and setters
+    public Customer(Long custId) {
+        this.id = custId;
+    }
+
+    public Customer(Long custId, String custName, String email, String phone, String address) {
+        this.id = custId;
+        this.custName = custName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    public Customer(String custName, String email, String phone, String address) {
+        this.custName = custName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
+// Getters and setters
+
+    public Long getCustId() {
+        return id;
+    }
+
+    public void setCustId(Long custId) {
+        this.id = custId;
+    }
+
+    public String getCustName() {
+        return custName;
+    }
+
+    public void setCustName(String custName) {
+        this.custName = custName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
 }

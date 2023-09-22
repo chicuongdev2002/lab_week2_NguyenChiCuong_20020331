@@ -1,7 +1,6 @@
 package vn.edu.iuh.fit.lab_week_2_nguyenchicuong.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
 import vn.edu.iuh.fit.lab_week_2_nguyenchicuong.enums.ProductStatus;
 
 import java.io.Serializable;
@@ -19,11 +18,13 @@ public class Product implements  Serializable {
     private String manufactuner;
     @Column(name = "name",columnDefinition = "varchar(150)")
     private String name;
-    @Column(name = "status",columnDefinition = "INT(11)")
+    @Enumerated(EnumType.ORDINAL) // Đánh dấu là sử dụng Enum
+    @Column(name = "status",columnDefinition = "int(11)")
     private ProductStatus status;
     @Column(name = "unit",columnDefinition = "varchar(25)")
     private String unit;
-
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ProductImage> images;
 
 
 

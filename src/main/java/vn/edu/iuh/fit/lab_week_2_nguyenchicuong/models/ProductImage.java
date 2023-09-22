@@ -9,13 +9,14 @@ import java.io.Serializable;
 public class ProductImage implements Serializable
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="image_id",unique = true,nullable = false)
     private long image_id;
     @Column(name = "alternative",columnDefinition = "VARCHAR(250)")
     private String alternative;
     @Column(name = "path",columnDefinition = "VARCHAR(250)")
     private String path;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
 
