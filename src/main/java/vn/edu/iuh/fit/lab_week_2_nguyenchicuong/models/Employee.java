@@ -32,8 +32,8 @@ public class Employee {
     @Column(name = "status",nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private EmployeeStatus status;
-    @OneToMany(mappedBy = "order_id")
-    private List<Order> orderList;
+//    @OneToMany(mappedBy = "order_id")
+//    private List<Order> orderList;
     public Employee() {
     }
 

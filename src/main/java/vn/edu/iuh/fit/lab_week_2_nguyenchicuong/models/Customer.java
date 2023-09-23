@@ -25,8 +25,8 @@ public class Customer implements Serializable {
 
     @Column(name = "address", columnDefinition = "text",nullable = false)
     private String address;
-    @OneToMany(mappedBy = "order_id")
-    private List<Order> orderList;
+//    @OneToMany(mappedBy = "order_id")
+//    private List<Order> orderList;
     public Customer() {
     }
 
@@ -90,4 +90,14 @@ public class Customer implements Serializable {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", custName='" + custName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

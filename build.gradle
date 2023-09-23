@@ -36,11 +36,12 @@ dependencies {
   implementation('joda-time:joda-time:2.12.5')
   //Hibernate
   implementation('org.hibernate:hibernate-core:6.2.0.Final')
-//  implementation ('org.hibernate:hibernate-jndi:6.2.0.Final')
-  //implementation group: 'org.hibernate', name: 'hibernate-jndi', version: '6.2.0.Final'
-  //Persistence JPA
-  // https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa
   implementation group: 'org.eclipse.persistence', name: 'org.eclipse.persistence.jpa', version: '3.0.0'
+
+  //Datatime
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
+  implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.15.2'
+
 }
 
 test {
